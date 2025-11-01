@@ -1,0 +1,69 @@
+# 🧭 Cursor Rules for Backroad Drivers App
+
+# === General Project Direction ===
+project_name: "Backroad Drivers"
+description: "A scenic drives app with MapLibre maps, Glassmorphism UI, and Supabase backend for storing routes and users."
+
+rules:
+
+  # --- Code Style & Readability ---
+  - Always use modern ES6+ syntax, React functional components, and hooks.
+  - Write clear, self-documenting code with meaningful names.
+  - Include inline comments for non-obvious logic.
+  - Use TypeScript when possible (for safety + autocompletion).
+
+  # --- Framework & Libraries ---
+  - Framework: Next.js (App Router)
+  - Styling: Tailwind CSS
+  - Mapping: MapLibre GL JS
+  - Backend: Supabase (for auth + route storage)
+  - Hosting: Vercel
+
+  # --- UI / UX Design ---
+  - Design should follow Apple’s Glassmorphism aesthetic:
+    - Blurred translucent panels (backdrop-blur + opacity layers)
+    - Rounded corners, soft gradients, and depth via subtle shadows
+    - Use Apple iOS simplicity — minimal icons, clean spacing, consistent hierarchy
+    - Blend iOS and Android 16 material cues (slightly brighter accents, motion-friendly)
+    - Lean towards Android 16 material
+  - Use Tailwind’s built-in utilities and custom CSS variables for the Glassmorphism theme.
+  - All pages must be responsive for both mobile and desktop.
+  - Mobile first approach across the entire project.
+  - For images, generate mockup SVGs when needed.
+  - For placeholder text, use expert copywriting techniques.
+
+  # --- Security & Performance ---
+  - Sanitize all user inputs before storage or rendering.
+  - Never expose API keys or Supabase secrets in client code.
+  - Use environment variables for sensitive data.
+  - Use async/await for all API calls.
+  - Optimize images and map tiles loading (lazy load where possible).
+  - Avoid blocking UI — show skeletons or loaders for fetch calls.
+
+  # --- Supabase Integration ---
+  - Use Supabase for:
+    - Authentication (email + social)
+    - Database (routes, users, reviews)
+    - Storage (GPX or image uploads)
+  - Protect all endpoints with Supabase Row Level Security (RLS).
+  - Use server-side API routes in Next.js for any secure operations.
+
+  # --- Code Organization ---
+  - Store UI components in `/components`.
+  - Pages in `/app`.
+  - Hooks and utilities in `/lib` or `/hooks`.
+  - Keep logic modular and reusable.
+  - Always import using absolute paths (e.g. "@/components/Map").
+
+  # --- Performance / UX ---
+  - Aim for <100ms TTI and minimal bundle size.
+  - Use React Suspense + lazy loading for maps or large components.
+  - Optimize map rendering and re-renders.
+  - Use Next.js Image component for any images.
+
+  # --- AI Behavior ---
+  - When generating code, always explain the reasoning in comments.
+  - Prefer minimal, elegant solutions over complex abstractions.
+  - Never generate placeholder API keys.
+  - If a user request might impact security or performance, ask before implementing.
+  - Minimize monthly prompt usage for tokens
