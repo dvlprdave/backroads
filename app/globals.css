@@ -1,8 +1,137 @@
 @import "tailwindcss";
 
+/* ============================================
+   Light Theme (Default)
+   WCAG AA compliant color contrast
+   ============================================ */
 :root {
+  /* Base Colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  
+  /* Surface Colors */
+  --surface-primary: #ffffff;
+  --surface-secondary: #f8fafc;
+  --surface-tertiary: #f1f5f9;
+  
+  /* Border Colors */
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-dark: #94a3b8;
+  
+  /* Text Colors */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --text-inverse: #ffffff;
+  
+  /* Accent Colors - Blue (Primary) */
+  --accent-primary: #3b82f6;
+  --accent-primary-hover: #2563eb;
+  --accent-primary-light: #dbeafe;
+  
+  /* Accent Colors - Emerald (Success/Scenic) */
+  --accent-emerald: #10b981;
+  --accent-emerald-light: #d1fae5;
+  
+  /* Accent Colors - Amber (Warning/Off-road) */
+  --accent-amber: #f59e0b;
+  --accent-amber-light: #fef3c7;
+  
+  /* Accent Colors - Red (Error/Danger) */
+  --accent-red: #ef4444;
+  --accent-red-light: #fee2e2;
+  
+  /* Accent Colors - Green (Success/Easy) */
+  --accent-green: #22c55e;
+  --accent-green-light: #dcfce7;
+  
+  /* Accent Colors - Yellow (Medium Difficulty) */
+  --accent-yellow: #eab308;
+  --accent-yellow-light: #fef08a;
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.05);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(to bottom right, #f8fafc, #e0e7ff, #ddd6fe);
+  --gradient-hero: linear-gradient(to bottom right, #f8fafc, #dbeafe, #ddd6fe);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================
+   Dark Theme
+   WCAG AA compliant color contrast
+   ============================================ */
+.dark {
+  /* Base Colors */
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  
+  /* Surface Colors */
+  --surface-primary: #0a0a0a;
+  --surface-secondary: #18181b;
+  --surface-tertiary: #27272a;
+  
+  /* Border Colors */
+  --border-light: #3f3f46;
+  --border-medium: #52525b;
+  --border-dark: #71717a;
+  
+  /* Text Colors */
+  --text-primary: #ededed;
+  --text-secondary: #d4d4d8;
+  --text-tertiary: #a1a1aa;
+  --text-inverse: #0a0a0a;
+  
+  /* Accent Colors - Blue (Primary) */
+  --accent-primary: #3b82f6;
+  --accent-primary-hover: #60a5fa;
+  --accent-primary-light: rgba(59, 130, 246, 0.2);
+  
+  /* Accent Colors - Emerald (Success/Scenic) */
+  --accent-emerald: #10b981;
+  --accent-emerald-light: rgba(16, 185, 129, 0.2);
+  
+  /* Accent Colors - Amber (Warning/Off-road) */
+  --accent-amber: #f59e0b;
+  --accent-amber-light: rgba(245, 158, 11, 0.2);
+  
+  /* Accent Colors - Red (Error/Danger) */
+  --accent-red: #ef4444;
+  --accent-red-light: rgba(239, 68, 68, 0.2);
+  
+  /* Accent Colors - Green (Success/Easy) */
+  --accent-green: #22c55e;
+  --accent-green-light: rgba(34, 197, 94, 0.2);
+  
+  /* Accent Colors - Yellow (Medium Difficulty) */
+  --accent-yellow: #eab308;
+  --accent-yellow-light: rgba(234, 179, 8, 0.2);
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(26, 26, 26, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(to bottom right, #0a0a0a, #1e3a8a, #312e81);
+  --gradient-hero: linear-gradient(to bottom right, #0a0a0a, #1e3a8a, #312e81);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
 }
 
 @theme inline {
@@ -12,15 +141,38 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  
+  /* Smooth transitions between themes */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth transitions for common elements - more specific selectors */
+[class*="bg-"],
+[class*="text-"],
+[class*="border-"] {
+  transition-property: background-color, color, border-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Smooth scrolling for iOS-like behavior */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0s !important;
+  }
 }

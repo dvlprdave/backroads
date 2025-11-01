@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import ThemeToggle from "@/components/ThemeToggle";
 
 // Dynamically import MapLibre to avoid SSR issues
 const MapPreview = dynamic(() => import("../components/MapPreview"), {
@@ -152,7 +153,7 @@ export default function Home() {
             <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
               Backroad Drivers
             </div>
-            <div className="hidden sm:flex items-center gap-6 lg:gap-8">
+            <div className="hidden sm:flex items-center gap-4 lg:gap-6">
               <a
                 href="#features"
                 className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors text-sm lg:text-base"
@@ -171,22 +172,26 @@ export default function Home() {
               >
                 Join Beta
               </a>
+              <ThemeToggle />
             </div>
-            <button className="sm:hidden text-slate-700 dark:text-slate-300">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
+            <div className="flex items-center gap-3 sm:hidden">
+              <ThemeToggle />
+              <button className="text-slate-700 dark:text-slate-300">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
